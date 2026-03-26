@@ -159,7 +159,8 @@ public class App extends Application {
         
         btnAdd.setOnAction(e -> {
             try {
-                validarCombo(cbDoadorDoacao, "Doador"); validarCombo(cbCampanhaDoacao, "Campanha");
+                validarCombo(cbDoadorDoacao, "Doador"); 
+                validarCombo(cbCampanhaDoacao, "Campanha");
                 Doacao d = new Doacao(0, txtTipo.getText(), Double.parseDouble(txtVol.getText().replace(",", ".")), 
                                       new java.sql.Date(System.currentTimeMillis()), "Balcão", 
                                       cbDoadorDoacao.getValue().getId(), cbCampanhaDoacao.getValue().getId());
@@ -167,7 +168,9 @@ public class App extends Application {
                 atualizarTudo(); 
                 txtTipo.clear(); 
                 txtVol.clear();
-            } catch (Exception ex) { mostrarAlerta("Erro", ex.getMessage()); }
+            } catch (Exception ex) {
+                 mostrarAlerta("Erro", ex.getMessage()); 
+            }
         });
 
         configurarTabelaDoacoes();

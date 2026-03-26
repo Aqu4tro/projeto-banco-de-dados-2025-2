@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:17 # Fixamos na versão 17 para evitar o bug de permissão da v18+
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: usuario_ufca
+      POSTGRES_PASSWORD: senha_forte
+      POSTGRES_DB: sistema_doacoes
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./seed.sql:/docker-entrypoint-initdb.d/02-seed.sql
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@ufca.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

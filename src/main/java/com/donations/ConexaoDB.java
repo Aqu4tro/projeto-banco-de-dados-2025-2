@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexaoDB {
-    private static final String URL = "jdbc:postgresql://localhost:5432/donations";
-    private static final String USUARIO = "postgres";
-    private static final String SENHA = "1234";
+    private static final String URL = "jdbc:postgresql://localhost:5432/sistema_doacoes";
+    private static final String USUARIO = "usuario_ufca";
+    private static final String SENHA = "enha_forte";
     private static Connection conn;
 
     public static Connection conectar() {
